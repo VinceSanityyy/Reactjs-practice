@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import {Card,Button,Form} from 'react-bootstrap';
 import {postData} from '../../services/postData'
+import {Redirect} from 'react-router-dom'
 import axios from 'axios'
 class Login extends Component{
     constructor(props) {
@@ -8,7 +9,8 @@ class Login extends Component{
     
       this.state = {
         email:'',
-        password:''
+        password:'',
+        redirect: false
       };
         this.onEmailChange = this.onEmailChange.bind(this)
         this.onPasswordChange = this.onPasswordChange.bind(this)
@@ -28,21 +30,27 @@ class Login extends Component{
         }
        }).then((res)=>{
         console.log(res)
-        localStorage.setItem('Bearer', res.data.bearer_token);
+        localStorage.setItem('Bearer', res.data.bearer_token)
+        this.setState({redirect: true})
        }).catch((err)=>{
         console.log(err)
        })
     }
     onEmailChange(e){
         this.setState({email: e.target.value});
-        console.log('asdasd')
     }
     onPasswordChange(e){
         this.setState({password: e.target.value});
     }
     render(){
+        if (this.state.redirect) {
+            return (<Redirect to ={'/home'}/>)
+        }
+        if (localStorage.getItem('Bearer')) {
+            return (<Redirect to ={'/home'}/>)
+        }
         return(
-           <div className="col-md-12">
+              <div className="col-md-12">
                 <Card>
                 <Card.Header as="h5">Featured</Card.Header>
                 <Card.Body>
