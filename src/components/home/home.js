@@ -9,7 +9,7 @@ class Home extends Component{
                 <p>
                 <code>React JS practice</code>
                 </p>
-                <Button variant="outline-primary">Log in</Button>
+                <Button href="/login" variant="outline-primary">Log in</Button>
             </div>
         )
     }

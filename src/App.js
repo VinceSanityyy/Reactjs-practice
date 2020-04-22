@@ -5,7 +5,7 @@ import Header from './components/header/header'
 import Footer from './components/footer/footer'
 
 import Routes from './routes'
-import Login from './components/login/login'
+
 class App extends Component {
   constructor(props){
     super(props)
