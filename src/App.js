@@ -18,9 +18,9 @@ class App extends Component {
   return (
     <div className="App">
       <title>{this.state.AppName}</title>
-        <Header/>
+      
         <Routes/>
-        <Footer/>
+     
     </div>
   
   );
